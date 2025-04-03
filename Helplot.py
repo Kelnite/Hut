@@ -11,15 +11,15 @@ class Helplot:
   >>> plot_hist.Relplot
   >>> plot_hist.Falplot
   """
-  def __init__(self, hist, loop, logits):
+  def __init__(self, hist, loop, metrics):
     self.hist = hist
     self.loop = loop
+    self.metrics = metrics
 
   @property
   def Relplot(self):
     """
     """
-    plt.plot(self.loop)
     if self.val_log in self.hist:
       plt.plot(self.loop, self.val_log)
     plt.title("Model Result")
