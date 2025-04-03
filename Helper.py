@@ -1,4 +1,4 @@
-import os, shutil, urrlib
+import os, shutil, urllib
 
 def GetFile(url, filename, filepath, unpack=False, file_type="zip"):
   """
