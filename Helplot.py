@@ -19,7 +19,9 @@ class Helplot:
   @property
   def Relplot(self):
     """
+    Model Result
     """
+    plt.plot(self.loop)
     if self.val_log in self.hist:
       plt.plot(self.loop, self.val_log)
     plt.title("Model Result")
