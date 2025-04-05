@@ -14,17 +14,18 @@ class Helplot:
   def __init__(self, hist, loop, metrics):
     self.hist = hist
     self.loop = loop
-    self.metrics = metrics
+    self.metrics = hist.history[metrics]
 
   @property
   def Relplot(self):
     """
     Model Result
     """
-    plt.plot(self.loop)
-    if self.val_log in self.hist:
-      plt.plot(self.loop, self.val_log)
+    plt.plot(self.loop, self.metrics, label='Train Accuracy')
     plt.title("Model Result")
+    plt.xlabel("Epochs")
+    plt.ylabel("Accuracy")
+    plt.xticks(self.loop)
     plt.legend();
 
   @property
@@ -33,7 +34,8 @@ class Helplot:
     Model Error Plot
     """
     plt.plot(self.loop)
-    if self.val_loss in self.hist:
-      plt.plot(self.loop, self.val_loss)
     plt.title("Model Error")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.xticks(self.loop)
     plt.legend();
