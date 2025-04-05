@@ -17,6 +17,9 @@ class Helplot:
     self.metrics = metrics
 
   def labeler(self, xlabel, ylabel, title, legend=False):
+    """
+    Plot on Title, Label
+    """
     plt.xlabel(xlabel); plt.ylabel(ylabel)
     if legend:
       plt.legend()
