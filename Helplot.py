@@ -15,6 +15,13 @@ class Helplot:
     self.hist = hist
     self.loop = loop
     self.metrics = hist.history[metrics]
+    self.loss = hist.history['loss']
+
+  def labeler(self, xlabel, ylabel, title, legend=False):
+    plt.title(title)
+    plt.xlabel(xlabel); plt.ylabel(ylabel)
+    if legend:
+      plt.legend()
 
   @property
   def Relplot(self):
@@ -22,20 +29,14 @@ class Helplot:
     Model Result
     """
     plt.plot(self.loop, self.metrics, label='Train Accuracy')
-    plt.title("Model Result")
-    plt.xlabel("Epochs")
-    plt.ylabel("Accuracy")
-    plt.xticks(self.loop)
-    plt.legend();
+    self.labeler('Epochs', 'Accuracy', 'Model Result', True)
+    plt.xticks(self.loop);
 
   @property
   def Falplot(self):
     """
     Model Error Plot
     """
-    plt.plot(self.loop)
-    plt.title("Model Error")
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    plt.xticks(self.loop)
-    plt.legend();
+    plt.plot(self.loop, self.loss, label='Train Loss')
+    self.labeler('Epochs', 'Loss', 'Model Error', True)
+    plt.xticks(self.loop);
