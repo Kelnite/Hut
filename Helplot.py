@@ -14,6 +14,7 @@ class Helplot:
   def __init__(self, hist, loop, metrics):
     self.hist = hist
     self.loop = loop
+    self.metrics = metrics
 
   def labeler(self, xlabel, ylabel, title, legend=False):
     plt.title(title)
