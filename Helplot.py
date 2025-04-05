@@ -14,8 +14,6 @@ class Helplot:
   def __init__(self, hist, loop, metrics):
     self.hist = hist
     self.loop = loop
-    self.metrics = hist.history[metrics]
-    self.loss = hist.history['loss']
 
   def labeler(self, xlabel, ylabel, title, legend=False):
     plt.title(title)
@@ -28,7 +26,8 @@ class Helplot:
     """
     Model Result
     """
-    plt.plot(self.loop, self.metrics, label='Train Accuracy')
+    metrics = self.hist.history[self.metrics]
+    plt.plot(self.loop, metrics, label='Train Accuracy')
     self.labeler('Epochs', 'Accuracy', 'Model Result', True)
     plt.xticks(self.loop);
 
@@ -37,6 +36,7 @@ class Helplot:
     """
     Model Error Plot
     """
-    plt.plot(self.loop, self.loss, label='Train Loss')
+    loss = self.hist.history['loss']
+    plt.plot(self.loop, loss, label='Train Loss')
     self.labeler('Epochs', 'Loss', 'Model Error', True)
     plt.xticks(self.loop);
